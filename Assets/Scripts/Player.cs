@@ -7,6 +7,14 @@ public class Player : MonoBehaviour
     //player move speed
     [SerializeField]
     int speed = 1;
+    //laser
+    [SerializeField]
+    GameObject laserPrefab;
+    //fire rate
+    [SerializeField]
+    float laserFireRate = 1;
+    //variable to hold Time.time
+    float lastShot = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +28,7 @@ public class Player : MonoBehaviour
     {
         playerMovement();
         playerBoundries();
+        fireLaser();
     }
 
     //movement code
@@ -45,14 +54,14 @@ public class Player : MonoBehaviour
         float xBoundryLeft = -11.3f;
         float xBoundryRight = 11.3f;
 
-        //If player position on the Y is less than -4
+        //If player position on the Y is less than or equal to -4
         //Y = -4
         if (transform.position.y <= yBoundryBottom)
         {
             transform.position = new Vector3(transform.position.x, yBoundryBottom, transform.position.z);
         }
 
-        //If player position on the Y is greater than 5.9
+        //If player position on the Y is greater than or equal to 5.9
         //Y = 5.9
         if (transform.position.y >= yBoundryTop)
         {
@@ -72,5 +81,21 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(xBoundryLeft, transform.position.y, transform.position.z);
         }
+    }
+
+    //player fires laser
+    void fireLaser()
+    {
+        //If the right amount of time has passed since the last shot and space key is hit
+        //spawn laser prefab
+        if (Input.GetKey(KeyCode.Space) && Time.time > laserFireRate+lastShot)
+        {
+            //update lastShot
+            lastShot = Time.time + laserFireRate;
+
+            //Insantiate laser prefab
+            Instantiate(laserPrefab, transform.position + (transform.up * .7f), Quaternion.identity);
+        }
+        
     }
 }

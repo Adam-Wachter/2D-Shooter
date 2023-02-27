@@ -392,7 +392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484186189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 0.48, z: 2.53}
+  m_LocalPosition: {x: 0, y: -1.995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -412,3 +412,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  laserPrefab: {fileID: 7469949149948760226, guid: f566f8aaf426c4f49a5fd49e4a7b6d0d, type: 3}
+  fireRate: 1
