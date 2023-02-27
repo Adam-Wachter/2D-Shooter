@@ -15,20 +15,34 @@ public class Player : MonoBehaviour
     float laserFireRate = 1;
     //variable to hold Time.time
     float lastShot = 0.0f;
+    Camera m_camera;
 
     // Start is called before the first frame update
     void Start()
     {
+        //call camera
+        m_camera = Camera.main;
+
         //take current position = new position (0,0,0)
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = new Vector3(0, 1, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
         playerMovement();
+        lookAtMouse();
         playerBoundries();
         fireLaser();
+    }
+
+    //look at mouse
+    void lookAtMouse()
+    {
+        Vector3 lookAtPos = Input.mousePosition;
+        lookAtPos.z = m_camera.transform.position.y - transform.position.y;
+        lookAtPos = m_camera.ScreenToWorldPoint(lookAtPos);
+        transform.forward = lookAtPos - transform.position;
     }
 
     //movement code
@@ -43,16 +57,17 @@ public class Player : MonoBehaviour
 
         //Movement (in this direction * at this speed * in real time)
         transform.Translate (direction * speed * Time.deltaTime);
+
     }
 
     //player boundries
     void playerBoundries()
     {
         //preset boundries for x and y
-        float yBoundryBottom = -4;
-        float yBoundryTop = 5.9f;
-        float xBoundryLeft = -11.3f;
-        float xBoundryRight = 11.3f;
+        float yBoundryBottom = -10.1f;
+        float yBoundryTop = 10.1f;
+        float xBoundryLeft = -20.6f;
+        float xBoundryRight = 20.6f;
 
         //If player position on the Y is less than or equal to -4
         //Y = -4
