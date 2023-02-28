@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     {
         enemyMovement();
         enemyFire();
+        lookAtPlayer();
     }
 
     //enemy movement
@@ -37,6 +38,12 @@ public class Enemy : MonoBehaviour
         //transform.Translate(Vector3.down * enemySpeed * Time.deltaTime);
         agent.SetDestination(playerPosition);
 
+    }
+
+    //look at player
+    void lookAtPlayer()
+    {
+        transform.LookAt(playerPosition);
     }
 
     //enemy fire

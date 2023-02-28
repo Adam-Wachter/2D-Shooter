@@ -22,14 +22,14 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        laserMovement();
+        //laserMovement();
         laserTimeout();
     }
 
     void laserMovement()
     {
         //Move the laser up at a set speed
-        transform.Translate(Vector3.up * laserSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * laserSpeed * Time.deltaTime);
     }
 
     void laserTimeout()
