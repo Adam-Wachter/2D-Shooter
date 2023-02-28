@@ -30,53 +30,19 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //playerMovement();
-        //lookAtMouse();
         playerBoundries();
         //fireLaser();
     }
 
-    //look at mouse
-    void lookAtMouse()
-    {
-        Vector3 lookAtPos = Input.mousePosition;
-        lookAtPos.z = m_camera.transform.position.y - transform.position.y;
-        lookAtPos = m_camera.ScreenToWorldPoint(lookAtPos);
-        transform.forward = lookAtPos - transform.position;
-    }
-
-    //movement code
-    void playerMovement()
-    {
-         //Variables = input horizontal and vertical axis
-         float horizontalInput = Input.GetAxis("Horizontal");
-         float verticalInput = Input.GetAxis("Vertical");
-
-         //Variable = new position (horizontal input, vertical input, 0)
-         Vector3 direction = new Vector3 (horizontalInput, 0, verticalInput);
-
-         //Movement (in this direction * at this speed * in real time)
-         transform.Translate (direction * speed * Time.deltaTime); 
-
-        /*if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector3.back * speed * Time.deltaTime);
-        }*/
-
-    }
 
     //player boundries
     void playerBoundries()
     {
         //preset boundries for x and y
-        float yBoundryBottom = -10.12f;
-        float yBoundryTop = 10.12f;
-        float xBoundryLeft = -18.4f;
-        float xBoundryRight = 18.4f;
+        float yBoundryBottom = -2f;
+        float yBoundryTop = 15f;
+        float xBoundryLeft = -19.1f;
+        float xBoundryRight = 19.1f;
 
         //If player position on the Y is less than or equal to -4
         //Y = -4
