@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.29
+    agentRadius: 0.35
     agentHeight: 0.46
     agentSlope: 16.3
     agentClimb: 0.41
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.096666664
+    cellSize: 0.11666667
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -157,7 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1099841847}
   spawnPoint: {fileID: 77213129}
-  spawnTime: 2.96
+  minTime: 6
+  maxTime: 20
 --- !u!65 &77213126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -246,6 +247,14 @@ PrefabInstance:
     - target: {fileID: 1277716931304580, guid: 769b49e7c9c9c9240a19d2aebb0314af, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Gallows_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277716931304580, guid: 769b49e7c9c9c9240a19d2aebb0314af, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277716931304580, guid: 769b49e7c9c9c9240a19d2aebb0314af, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4454046196770822, guid: 769b49e7c9c9c9240a19d2aebb0314af, type: 3}
       propertyPath: m_RootOrder
@@ -1699,7 +1708,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1099841847}
   spawnPoint: {fileID: 873140543}
-  spawnTime: 2.96
+  minTime: 6
+  maxTime: 20
 --- !u!65 &873140540
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1817,7 +1827,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1099841847}
   spawnPoint: {fileID: 902039912}
-  spawnTime: 2.96
+  minTime: 6
+  maxTime: 20
 --- !u!65 &902039909
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2250,7 +2261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1099841847}
   spawnPoint: {fileID: 1260848106}
-  spawnTime: 2.96
+  minTime: 6
+  maxTime: 20
 --- !u!65 &1260848103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2840,7 +2852,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1099841847}
   spawnPoint: {fileID: 1559882925}
-  spawnTime: 2.96
+  minTime: 6
+  maxTime: 20
 --- !u!65 &1559882922
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3389,7 +3402,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1099841847}
   spawnPoint: {fileID: 1819002789}
-  spawnTime: 2.96
+  minTime: 6
+  maxTime: 20
 --- !u!65 &1819002786
 BoxCollider:
   m_ObjectHideFlags: 0

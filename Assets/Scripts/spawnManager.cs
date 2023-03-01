@@ -8,27 +8,33 @@ public class spawnManager : MonoBehaviour
     GameObject enemyPrefab;
     [SerializeField]
     Transform spawnPoint;
-    
     [SerializeField]
-    float spawnTime = 1.0f;
+    float minTime = 10.0f;
+    [SerializeField]
+    float maxTime = 20.0f;
+    float spawnTime;
     float lastSpawn = 0f;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(InstantiateObject());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > spawnTime + lastSpawn)
+        
+    }
+
+    IEnumerator InstantiateObject()
+    {
+        while (true)
         {
-            lastSpawn = Time.time + spawnTime;
+            yield return new WaitForSecondsRealtime(Random.Range(minTime, maxTime));
 
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
         }
-        
     }
 }
