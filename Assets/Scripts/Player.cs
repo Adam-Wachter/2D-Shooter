@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //player move speed
-    [SerializeField]
-    int speed = 1;
     //laser
     [SerializeField]
     GameObject laserPrefab;
