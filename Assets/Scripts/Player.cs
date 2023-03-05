@@ -14,6 +14,11 @@ public class Player : MonoBehaviour
     float lastShot = 0.0f;
     Camera m_camera;
 
+    public int maxHealth = 3;
+    private int currentHealth;
+    public float deathDelay = 1f;
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,5 +89,16 @@ public class Player : MonoBehaviour
             Instantiate(laserPrefab, transform.position + (transform.forward * .7f), Quaternion.identity);
         }
         
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            animator.SetTrigger("Die");
+            Destroy(gameObject, deathDelay);
+        }
     }
 }

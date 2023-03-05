@@ -13,7 +13,7 @@ public class spawnManager : MonoBehaviour
     [SerializeField]
     float maxTime = 20.0f;
     float spawnTime;
-    float lastSpawn = 0f;
+    //float lastSpawn = 0f;
 
 
     // Start is called before the first frame update
@@ -35,6 +35,7 @@ public class spawnManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(Random.Range(minTime, maxTime));
 
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            enemy.SetActive(true);
         }
     }
 }

@@ -13,21 +13,27 @@ public class Enemy : MonoBehaviour
 
     Vector3 playerPosition;
 
+    public int maxHealth = 1;
+    private int currentHealth;
+    public float deathDelay = 1f;
+    public Animator animator;
+
     //[SerializeField]
     //float enemySpeed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        enemyMovement();
-        enemyFire();
-        lookAtPlayer();
+        //enemyMovement();
+        //enemyFire();
+        //lookAtPlayer();
     }
 
     //enemy movement
@@ -50,5 +56,15 @@ public class Enemy : MonoBehaviour
     void enemyFire()
     {
         
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            animator.SetTrigger("Die");
+            Destroy(gameObject, deathDelay);
+        }
     }
 }

@@ -10,6 +10,7 @@ public class Laser : MonoBehaviour
     //laser flight time
     [SerializeField]
     float laserFlightTime = 1.0f;
+    public int damage = 1;
 
 
 
@@ -36,5 +37,25 @@ public class Laser : MonoBehaviour
     {
         //destroy laser after a set time
         Destroy(this.gameObject, laserFlightTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            other.transform.GetComponent<Enemy>().TakeDamage(damage);
+            //enemy.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        else if (other.tag == "Player")
+        {
+            other.transform.GetComponent<Player>().TakeDamage(damage);
+            //player.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
