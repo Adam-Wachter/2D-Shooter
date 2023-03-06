@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class LaserEnemy : MonoBehaviour
 {
     //laser travel speed
     [SerializeField]
@@ -11,8 +11,6 @@ public class Laser : MonoBehaviour
     [SerializeField]
     float laserFlightTime = 1.0f;
     public int damage = 1;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +41,12 @@ public class Laser : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            other.transform.GetComponent<Enemy>().TakeDamage(damage);
-            //enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
         else if (other.tag == "Player")
         {
+            other.transform.GetComponent<Player>().TakeDamage(damage);
+            //player.TakeDamage(damage);
             Destroy(gameObject);
         }
         else if (other.gameObject.CompareTag("Wall"))

@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     //variable to hold Time.time
     float lastShot = 0.0f;
     Camera m_camera;
+    private GameObject[] _spawnManager;
 
     public int maxHealth = 3;
     private int currentHealth;
@@ -24,6 +25,10 @@ public class Player : MonoBehaviour
     {
         //call camera
         m_camera = Camera.main;
+        _spawnManager = GameObject.FindGameObjectsWithTag("Spawn");
+        animator = GetComponent<Animator>();
+
+        
 
         //take current position = new position (0,0,0)
         //transform.position = new Vector3(0, 1, 0);
@@ -98,7 +103,20 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0)
         {
             animator.SetTrigger("Die");
-            Destroy(gameObject, deathDelay);
+            StopAllCoroutinesOnSpawnPoints();
+            Destroy(this.gameObject, deathDelay);
+        }
+    }
+
+    private void StopAllCoroutinesOnSpawnPoints()
+    {
+        foreach (GameObject spawnPoint in _spawnManager)
+        {
+            MonoBehaviour[] scripts = spawnPoint.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour script in scripts)
+            {
+                script.StopAllCoroutines();
+            }
         }
     }
 }

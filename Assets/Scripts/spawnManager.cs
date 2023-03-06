@@ -13,6 +13,12 @@ public class spawnManager : MonoBehaviour
     [SerializeField]
     float maxTime = 20.0f;
     float spawnTime;
+
+    [SerializeField]
+    private GameObject _enemyContainer;
+    [SerializeField]
+    private bool _stopSpawning = false;
+
     //float lastSpawn = 0f;
 
 
@@ -30,12 +36,18 @@ public class spawnManager : MonoBehaviour
 
     IEnumerator InstantiateObject()
     {
-        while (true)
+        while (_stopSpawning == false)
         {
             yield return new WaitForSecondsRealtime(Random.Range(minTime, maxTime));
 
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            enemy.transform.parent = _enemyContainer.transform;
             enemy.SetActive(true);
         }
+    }
+
+    public void OnPlayerDeath()
+    {
+        _stopSpawning = true;
     }
 }
